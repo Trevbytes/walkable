@@ -1,0 +1,56 @@
+body,
+html {
+  height: 100%;
+}
+
+html {
+  font-size: 1rem;
+}
+
+@include media-breakpoint-up(sm) {
+  html {
+    font-size: 1.2rem;
+  }
+}
+
+@include media-breakpoint-up(md) {
+  html {
+    font-size: 1.4rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  html {
+    font-size: 2rem;
+  }
+}
+
+.logo-bg-color {
+  background-image: linear-gradient(
+    -180deg,
+    rgba(241,241,241, 0.9),
+    28%,
+    rgba(241,241,241, 0.75) 53%,
+    rgba(241,241,241, 0.6) 66%,
+    rgba(241,241,241, 0.5) 75%,
+    rgba(241,241,241, 0.25) 88%,
+    rgba(241,241,241, 0) 100%
+  );
+}
+
+.bg-img {
+  /* The image used */
+  background-image: url("/assets/images/salt_lake_city.jpg");
+
+  /* Full height */
+  height: 50%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.nav-link {
+    font-size: 1.5rem;
+}
