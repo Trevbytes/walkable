@@ -7,37 +7,6 @@ html {
   font-size: 1rem;
 }
 
-@include media-breakpoint-up(sm) {
-  html {
-    font-size: 1.2rem;
-  }
-}
-
-@include media-breakpoint-up(md) {
-  html {
-    font-size: 1.4rem;
-  }
-}
-
-@include media-breakpoint-up(lg) {
-  html {
-    font-size: 2rem;
-  }
-}
-
-.logo-bg-color {
-  background-image: linear-gradient(
-    -180deg,
-    rgba(241,241,241, 0.9),
-    28%,
-    rgba(241,241,241, 0.75) 53%,
-    rgba(241,241,241, 0.6) 66%,
-    rgba(241,241,241, 0.5) 75%,
-    rgba(241,241,241, 0.25) 88%,
-    rgba(241,241,241, 0) 100%
-  );
-}
-
 .bg-img {
   /* The image used */
   background-image: url("https://trevbytes.github.io/walkable/assets/images/salt_lake_city.jpg");
@@ -52,5 +21,28 @@ html {
 }
 
 .nav-link {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 800px) {
+  .logo-bg-color {
+    background-color: rgba(241, 241, 241);
+    background-image: none;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .logo-bg-color {
+    background-color: none;
+    background-image: linear-gradient(
+      -180deg,
+      rgba(241, 241, 241, 0.9),
+      28%,
+      rgba(241, 241, 241, 0.75) 53%,
+      rgba(241, 241, 241, 0.6) 66%,
+      rgba(241, 241, 241, 0.5) 75%,
+      rgba(241, 241, 241, 0.25) 88%,
+      rgba(241, 241, 241, 0) 100%
+    );
+  }
 }
