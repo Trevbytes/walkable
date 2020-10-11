@@ -259,7 +259,7 @@
    <script>
       function submitToAPI(e) {
            e.preventDefault();
-           var URL = "https://1wva9ow4qj.execute-api.us-east-2.amazonaws.com/beta/";
+           var URL = "https://1wva9ow4qj.execute-api.us-east-2.amazonaws.com/beta/contact-us";
       
                 var Namere = /[A-Za-z]{1}[A-Za-z]/;
                 if (!Namere.test($("#name-input").val())) {
@@ -292,10 +292,10 @@
               email : email,
               desc : desc
             };
-      
+            console.log(data)
            $.ajax({
              type: "POST",
-             url : "https://1wva9ow4qj.execute-api.us-east-2.amazonaws.com/beta/",
+             url : "https://1wva9ow4qj.execute-api.us-east-2.amazonaws.com/beta/contact-us",
              dataType: "json",
              crossDomain: "true",
              contentType: "application/json; charset=utf-8",
