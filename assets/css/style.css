@@ -1,6 +1,54 @@
+html,
 body,
-html {
+header,
+.view {
   height: 100%;
+}
+
+@media (max-width: 740px) {
+  html,
+  body,
+  header,
+  .view {
+    height: 100vh;
+  }
+}
+
+.top-nav-collapse {
+  background-color: rgba(241, 241, 241)!important;
+}
+
+.navbar:not(.top-nav-collapse) {
+    background-color: none;
+    background-image: linear-gradient(
+      -180deg,
+      rgba(241, 241, 241, 0.9),
+      28%,
+      rgba(241, 241, 241, 0.75) 53%,
+      rgba(241, 241, 241, 0.6) 66%,
+      rgba(241, 241, 241, 0.5) 75%,
+      rgba(241, 241, 241, 0.25) 88%,
+      rgba(241, 241, 241, 0) 100%
+    );
+}
+
+@media (max-width: 991px) {
+  .navbar:not(.top-nav-collapse) {
+    background: rgba(241, 241, 241) !important;
+  }
+}
+
+h1 {
+  letter-spacing: 8px;
+}
+
+h5 {
+  letter-spacing: 3px;
+}
+
+.hr-light {
+  border-top: 3px solid #fff;
+  width: 80px;
 }
 
 html {
@@ -8,7 +56,7 @@ html {
 }
 
 .bg-img {
-  /* The image used */
+  /* The image used - Currently Unused*/
   background-image: url("https://trevbytes.github.io/walkable/assets/images/salt_lake_city.jpg");
 
   /* Full height */
@@ -24,25 +72,7 @@ html {
   font-size: 1.5rem;
 }
 
-@media screen and (max-width: 800px) {
-  .logo-bg-color {
-    background-color: rgba(241, 241, 241);
-    background-image: none;
-  }
-}
-
-@media screen and (min-width: 800px) {
-  .logo-bg-color {
-    background-color: none;
-    background-image: linear-gradient(
-      -180deg,
-      rgba(241, 241, 241, 0.9),
-      28%,
-      rgba(241, 241, 241, 0.75) 53%,
-      rgba(241, 241, 241, 0.6) 66%,
-      rgba(241, 241, 241, 0.5) 75%,
-      rgba(241, 241, 241, 0.25) 88%,
-      rgba(241, 241, 241, 0) 100%
-    );
-  }
+.anchor {
+    padding-top: 100px; 
+    margin-top: -100px;
 }
