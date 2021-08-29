@@ -60,7 +60,7 @@
       content="Walkable is a real estate investment group focused on bringing more walkability to cities and suburbs."
     />
   </head>
-  <body>
+  <body style="background-image: url('assets/images/dust_scratches.png')">
     <!-- Nav Bar -->
     <nav
       class="navbar navbar-light logo-bg-color navbar-expand-sm nav-wrapper fixed-top scrolling-navbar py-0"
@@ -99,6 +99,7 @@
               aria-labelledby="navbarDropdownMenuLink-333"
             >
               <a class="dropdown-item" href="#currentProjects">Current</a>
+              <a class="dropdown-item" href="#pastProjects">Past</a>
               <a class="dropdown-item" href="#futureProjects">Future</a>
             </div>
           </li>
@@ -385,7 +386,7 @@
         <section class="anchor" id="currentProjects">
           <div class="row">
             <div class="col text-center">
-              <h4>Current</h4>
+              <h3>Current</h3>
             </div>
           </div>
           <hr />
@@ -570,7 +571,7 @@
         <section class="anchor" id="pastProjects">
           <div class="row">
             <div class="col text-center">
-              <h4>Past</h4>
+              <h3>Past</h3>
             </div>
           </div>
           <hr />
@@ -637,7 +638,7 @@
         <section class="anchor" id="futureProjects">
           <div class="row">
             <div class="col text-center">
-              <h4>Future</h4>
+              <h3>Future</h3>
             </div>
           </div>
           <hr />
@@ -764,6 +765,12 @@
                     </form>
                   </div>
                   <div class="modal-footer d-flex justify-content-center">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="Check">
+                      <label class="form-check-label" for="Check">
+                        I am not a robot.
+                      </label>
+                    </div>                    
                     <button
                       type="button"
                       onclick="submitToAPI(event)"
@@ -817,58 +824,65 @@
       function submitToAPI(e) {
         e.preventDefault();
         var URL = "https://1wva9ow4qj.execute-api.us-east-2.amazonaws.com/beta";
-
         var Namere = /[A-Za-z]{1}[A-Za-z]/;
-        if (!Namere.test($("#name-input").val())) {
-          alert("Name can not less than 2 char");
-          return;
-        }
-        var mobilere = /[0-9]{10}/;
-        if (!mobilere.test($("#phone-input").val())) {
-          alert("Please enter valid mobile number");
-          return;
-        }
-        if ($("#email-input").val() == "") {
-          alert("Please enter your email");
-          return;
-        }
+        var checkBox = document.getElementById("Check");
 
-        var reeamil = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
-        if (!reeamil.test($("#email-input").val())) {
-          alert("Please enter valid email address");
-          return;
-        }
+        // If the checkbox is checked, display the output text
+        if (checkBox.checked == true){          
+          if (!Namere.test($("#name-input").val())) {
+            alert("Name can not less than 2 char");
+            return;
+          }
+          var mobilere = /[0-9]{10}/;
+          if (!mobilere.test($("#phone-input").val())) {
+            alert("Please enter valid mobile number");
+            return;
+          }
+          if ($("#email-input").val() == "") {
+            alert("Please enter your email");
+            return;
+          }
 
-        var name = $("#name-input").val();
-        var phone = $("#phone-input").val();
-        var email = $("#email-input").val();
-        var desc = $("#description-input").val();
-        var data = {
-          name: name,
-          phone: phone,
-          email: email,
-          desc: desc,
+          var reeamil = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
+          if (!reeamil.test($("#email-input").val())) {
+            alert("Please enter valid email address");
+            return;
+          }
+
+          var name = $("#name-input").val();
+          var phone = $("#phone-input").val();
+          var email = $("#email-input").val();
+          var desc = $("#description-input").val();
+          var data = {
+            name: name,
+            phone: phone,
+            email: email,
+            desc: desc,
+          };
+          $.ajax({
+            type: "POST",
+            url:
+              "https://1wva9ow4qj.execute-api.us-east-2.amazonaws.com/beta/contact-us",
+            dataType: "json",
+            crossDomain: "true",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(data),
+
+            success: function () {
+              // clear form and show a success message
+              alert("Successful");
+              document.getElementById("contactForm").reset();
+              location.reload();
+            },
+            error: function (error) {
+              // show an error message
+              alert("Oops! Something went wrong.");
+            },
+          });
+        } else {
+          alert("Confirm that you are not a robot.");
+          return;
         };
-        $.ajax({
-          type: "POST",
-          url:
-            "https://1wva9ow4qj.execute-api.us-east-2.amazonaws.com/beta/contact-us",
-          dataType: "json",
-          crossDomain: "true",
-          contentType: "application/json; charset=utf-8",
-          data: JSON.stringify(data),
-
-          success: function () {
-            // clear form and show a success message
-            alert("Successfull");
-            document.getElementById("contactForm").reset();
-            location.reload();
-          },
-          error: function (error) {
-            // show an error message
-            alert("UnSuccessfull");
-          },
-        });
       }
       $(document).ready(function () {
         // Add smooth scrolling to all links
